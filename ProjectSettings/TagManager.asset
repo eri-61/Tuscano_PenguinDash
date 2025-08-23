@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Ground
+  - Obstacle
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2283186469
+    locked: 0
+  - name: Sky
+    uniqueID: 1388320875
+    locked: 0
+  - name: MountainFar
+    uniqueID: 3059399811
+    locked: 0
+  - name: MountainNear
+    uniqueID: 846206671
+    locked: 0
+  - name: Ground
+    uniqueID: 601136651
+    locked: 0
+  - name: Player
+    uniqueID: 3652195221
+    locked: 0
+  - name: UI
+    uniqueID: 656544229
+    locked: 0
+  m_RenderingLayers:
+  - Default
