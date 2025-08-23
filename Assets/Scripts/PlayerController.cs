@@ -9,14 +9,11 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D rb;
-    private CapsuleCollider2D col;
+    
+    private PlayerColliderHandler colliderHandler;
 
     private bool isGrounded = true;
     private bool isSliding = false;
-
-    // Store the original collider settings
-    private Vector2 originalColliderSize;
-    private Vector2 originalColliderOffset;
 
     private Vector2 touchStart;
 
@@ -34,11 +31,8 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<CapsuleCollider2D>();
+        colliderHandler = GetComponent<PlayerColliderHandler>();
 
-        // Store the original collider values
-        originalColliderSize = col.size;
-        originalColliderOffset = col.offset;
     }
 
     void Update()
@@ -92,38 +86,36 @@ public class PlayerController : MonoBehaviour
     {
         if (!isGrounded) return;
 
+        colliderHandler.SwitchToJumpCollider(); // Switch to jumping collider
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Reset vertical velocity
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
         anim.SetTrigger("Jump");
+        
     }
 
     public void EndJump()
     {
+        colliderHandler.SwitchToDefaultCollider(); // Switch back to default collider
         anim.SetBool("isWalking", true);
     }
 
     System.Collections.IEnumerator Slide()
     {
         isSliding = true;
+        colliderHandler.SwitchToSlideCollider(); // Switch to sliding collider
         anim.SetTrigger("Slide");
-
-        // Adjust collider for sliding
-        col.size = new Vector2(col.size.x, originalColliderSize.y / 2); // Halve the height
-        col.offset = new Vector2(col.offset.x, originalColliderOffset.y - (originalColliderSize.y / 4)); // Lower the offset
 
         yield return new WaitForSeconds(slideDuration);
 
-        // Reset the collider to its original size and offset
-        col.size = originalColliderSize;
-        col.offset = originalColliderOffset;
-
         isSliding = false;
+        colliderHandler.SwitchToDefaultCollider(); // Switch back to default collider
     }
 
     public void EndSlide()
     {
         anim.SetBool("isWalking", true);
+        colliderHandler.SwitchToDefaultCollider(); // Switch back to default collider
         isSliding = false; // safety in case coroutine finishes early
     }
 
@@ -138,16 +130,24 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             anim.SetBool("isWalking", true);
+            colliderHandler.SwitchToDefaultCollider(); // Switch back to default collider
         }
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            rb.linearVelocity = new Vector2(0, -10);
+            // Disable all player colliders so he can fall through the ground
+            Collider2D[] allColliders = GetComponents<Collider2D>();
+            foreach (Collider2D col in allColliders)
+            {
+                col.enabled = false;
+            }
 
-            // Stop the player controller from working
+            // Apply a downward velocity to the Rigidbody
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -10f);
+
+            // Stop the player controller script
             this.enabled = false;
 
-            // Use the public variable to show the game over screen
             if (gameOverScript != null)
             {
                 gameOverScript.ShowGameOver();
