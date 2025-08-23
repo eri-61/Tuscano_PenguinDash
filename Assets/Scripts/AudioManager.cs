@@ -1,15 +1,19 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    public AudioSource musicSource;
-    public AudioClip[] musicTracks;
 
-    public Image checkboxImage;
-    public Sprite onSprite;
-    public Sprite offSprite;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip[] musicTracks;
+
+    [SerializeField] private Image musicToggle;
+    [SerializeField] private Sprite onSprite;
+    [SerializeField] private Sprite offSprite;
+
+    private int currentTrackIndex;
+    private bool isMusicOn;
+
 
     private void Awake()
     {
@@ -22,42 +26,51 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private void Start()
-    {
-        int trackIndex = PlayerPrefs.GetInt("Track", 0);
-        chooseTrack(trackIndex);
 
-        bool on = PlayerPrefs.GetInt("Music", 1) == 1;
-        ToggleMusic(on);
+        isMusicOn  = PlayerPrefs.GetInt("Music", 1) == 1;
+        currentTrackIndex = PlayerPrefs.GetInt("Track", 0);
+
+        ApplySettings();
     }
-    public void ToggleMusic(bool isOn)
+    
+    private void ApplySettings()
     {
-        if (!musicSource) return;
-        if (isOn)
+        if(isMusicOn)
         {
-            if(!musicSource.isPlaying) musicSource.Play();
-            checkboxImage.sprite = onSprite;
+            choooseTrack(currentTrackIndex);
+            musicSource.Play();
         }
         else
         {
             musicSource.Pause();
-            checkboxImage.sprite = offSprite;
         }
-        PlayerPrefs.SetInt("Music", isOn ? 1 : 0);
-        PlayerPrefs.Save();
     }
-
-    public void chooseTrack(int trackIndex)
+    public void ToggleMusic(bool isOn)
     {
-        if (musicTracks == null || musicTracks.Length == 0) return;
-        if (trackIndex < 0 || trackIndex >= musicTracks.Length) return; 
+        isMusicOn = isOn;
+        if (isMusicOn)
+        {
+            musicToggle.sprite = onSprite;
+            musicSource.Play();
+        }
+        else
+        {
+            musicToggle.sprite = offSprite;
+            musicSource.Pause();
+        }
+    }
+   
 
-        musicSource.clip = musicTracks[trackIndex];
-        musicSource.Play();
-        
-        PlayerPrefs.SetInt("Track", trackIndex);
-        PlayerPrefs.Save();
+    public void choooseTrack(int trackIndex)
+    {
+        if (trackIndex < 0 || trackIndex >= musicTracks.Length) return;
+
+        currentTrackIndex = trackIndex;
+        musicSource.clip = musicTracks[currentTrackIndex];
+        if (isMusicOn)
+        {
+            musicSource.Play();
+        }
 
     }
 

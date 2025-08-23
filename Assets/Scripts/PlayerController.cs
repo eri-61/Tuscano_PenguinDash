@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +13,10 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded = true;
     private bool isSliding = false;
+
+    // Store the original collider settings
+    private Vector2 originalColliderSize;
+    private Vector2 originalColliderOffset;
 
     private Vector2 touchStart;
 
@@ -33,6 +35,10 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
+
+        // Store the original collider values
+        originalColliderSize = col.size;
+        originalColliderOffset = col.offset;
     }
 
     void Update()
@@ -96,13 +102,25 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isWalking", true);
     }
+
     System.Collections.IEnumerator Slide()
     {
         isSliding = true;
         anim.SetTrigger("Slide");
+
+        // Adjust collider for sliding
+        col.size = new Vector2(col.size.x, originalColliderSize.y / 2); // Halve the height
+        col.offset = new Vector2(col.offset.x, originalColliderOffset.y - (originalColliderSize.y / 4)); // Lower the offset
+
         yield return new WaitForSeconds(slideDuration);
+
+        // Reset the collider to its original size and offset
+        col.size = originalColliderSize;
+        col.offset = originalColliderOffset;
+
         isSliding = false;
     }
+
     public void EndSlide()
     {
         anim.SetBool("isWalking", true);
@@ -124,14 +142,15 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            // Stop player
+            rb.linearVelocity = new Vector2(0, -10);
+
+            // Stop the player controller from working
             this.enabled = false;
 
-            // Trigger Game Over UI in the scene
-            GameOverScript goScript = FindObjectOfType<GameOverScript>();
-            if (goScript != null)
+            // Use the public variable to show the game over screen
+            if (gameOverScript != null)
             {
-                goScript.ShowGameOver();
+                gameOverScript.ShowGameOver();
             }
         }
     }

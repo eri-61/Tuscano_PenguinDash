@@ -7,9 +7,20 @@ public class GameplayUIScript : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI scoreText;
 
+    public GameObject pauseMenu;
+
+    public Button Pause;
     private void Start()
     {
-       
+        if (Pause != null)
+        {
+            if (pauseMenu != null)
+            {
+                pauseMenu.SetActive(false); // Hide pause menu initially
+            }
+
+            Pause.onClick.AddListener(showPauseMenu);
+        }
     }
 
     private void Update()
@@ -20,5 +31,9 @@ public class GameplayUIScript : MonoBehaviour
         }
     }
 
-   
+    void showPauseMenu()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f; // Pause the game
+    }
 }

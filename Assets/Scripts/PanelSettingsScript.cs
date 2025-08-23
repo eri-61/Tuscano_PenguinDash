@@ -19,7 +19,7 @@ public class PanelSettingsScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Track.onValueChanged.AddListener(val => AudioManager.Instance.chooseTrack(val));
+        Track.onValueChanged.AddListener(val => AudioManager.Instance.choooseTrack(val));
 
         bool on = PlayerPrefs.GetInt("Music", 1) == 1;
         ToggleMusic.isOn = on;
@@ -62,7 +62,7 @@ public class PanelSettingsScript : MonoBehaviour
     public void ChooseTrack()
     {
         int selectedIndex = Track.value;
-        AudioManager.Instance.chooseTrack(selectedIndex);
+        AudioManager.Instance.choooseTrack(selectedIndex);
 
     }
 }

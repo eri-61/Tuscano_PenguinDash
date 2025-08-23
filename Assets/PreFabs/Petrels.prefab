@@ -140,6 +140,8 @@ GameObject:
   - component: {fileID: 4078241826203698778}
   - component: {fileID: 9180034974463092172}
   - component: {fileID: -5802252024363740738}
+  - component: {fileID: 7130166236136212267}
+  - component: {fileID: 5327447296661019062}
   m_Layer: 0
   m_Name: Petrels
   m_TagString: Obstacle
@@ -283,5 +285,30 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 2
+  m_CollisionDetection: 1
+  m_Constraints: 6
+--- !u!114 &7130166236136212267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151750907349544610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f98be2b69c737741ab4c77172b6fb34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleMovement
+  speed: 5
+--- !u!114 &5327447296661019062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151750907349544610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b11cfe319e6f5114e8b02a5ff644ce5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyObstacles

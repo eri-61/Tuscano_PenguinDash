@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameOverScript : MonoBehaviour
 {
@@ -9,9 +10,14 @@ public class GameOverScript : MonoBehaviour
 
     public GameObject gameOverPanel;
     public GameObject gameplayUI;
+    public GameObject trophy;
+
+    public Button Menu;
+    public Button Retry;
 
     public void ShowGameOver()
     {
+
         if (gameplayUI != null)
             gameplayUI.SetActive(false);
 
@@ -19,19 +25,29 @@ public class GameOverScript : MonoBehaviour
         {
             int current = GameManager.Instance.currentScore;
             int high = GameManager.Instance.highScores[GameManager.Instance.currentMapIndex];
-            bool newHigh = GameManager.Instance.SaveHighScore();
+            bool newHigh = current > high;
 
-            currentScoreText.text = current.ToString();
+            currentScoreText.text = "Score: " + current.ToString() ;
             highScoreText.text = high.ToString();
-            if (newHigh)
-                highScoreText.text += " (NEW!)";
+            if (newHigh == true)
+            {
+                trophy.SetActive(true);
+                highScoreText.text += " (NEW!) High Score: ";
+            }
+                
 
             gameOverPanel.SetActive(true);
         }
     }
-
-    public void HideGameOver()
+    public void Reset()
     {
+        GameManager.Instance.SaveHighScore();
+        GameManager.Instance.ResetScore();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void Exit()
+    {
+        GameManager.Instance.SaveHighScore();
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }

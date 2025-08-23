@@ -1791,7 +1791,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &823282549
 MonoBehaviour:
@@ -1954,8 +1954,8 @@ RectTransform:
   - {fileID: 441930455}
   - {fileID: 314079046}
   - {fileID: 617161113}
-  - {fileID: 642083774}
   - {fileID: 920644239}
+  - {fileID: 642083774}
   - {fileID: 857687296}
   m_Father: {fileID: 1834227270}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2056,7 +2056,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 28}
+  m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &920644238
 GameObject:
@@ -5205,7 +5205,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
   - {fileID: 8300000, guid: 35967e8a4dfb1664e9b066939272c0a4, type: 3}
   - {fileID: 8300000, guid: 1f2ad53bacc245642854dbdc8ea71a9b, type: 3}
-  checkboxImage: {fileID: 702328736}
+  musicToggle: {fileID: 702328736}
   onSprite: {fileID: 21300000, guid: 73f4f19281893714da14e6376ef55ffd, type: 3}
   offSprite: {fileID: 21300000, guid: 9ba481af35fe7a94c87d83e0b20fdb62, type: 3}
 --- !u!82 &2111797137
