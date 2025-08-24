@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 129175878}
   - component: {fileID: 129175877}
   - component: {fileID: 129175876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 178598769}
   - component: {fileID: 178598774}
   - component: {fileID: 178598775}
+  - component: {fileID: 178598776}
   m_Layer: 5
   m_Name: PlayerController
   m_TagString: Player
@@ -347,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 178598766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -368,7 +369,6 @@ MonoBehaviour:
   gameOverScript: {fileID: 713501951}
   jumpForce: 7
   slideDuration: 0.5
-  playerColliderHandler: {fileID: 0}
 --- !u!95 &178598769
 Animator:
   serializedVersion: 7
@@ -461,7 +461,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 7.207986
+  m_Mass: 5.889999
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -478,6 +478,43 @@ Rigidbody2D:
   m_Constraints: 4
 --- !u!70 &178598775
 CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178598766}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.15600134, y: -0.9466859}
+  m_Size: {x: 2.6388915, y: 2.6388915}
+  m_Direction: 1
+--- !u!61 &178598776
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -510,9 +547,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0077596903, y: -1.4924128}
-  m_Size: {x: 2.1861866, y: 3.7662187}
-  m_Direction: 0
+  m_Offset: {x: -0.054695845, y: -1.0861063}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.0413969, y: 2.8852787}
+  m_EdgeRadius: 0
 --- !u!1 &191648705
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +570,7 @@ GameObject:
   - component: {fileID: 191648706}
   - component: {fileID: 191648708}
   - component: {fileID: 191648707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +736,7 @@ GameObject:
   - component: {fileID: 224558481}
   - component: {fileID: 224558480}
   - component: {fileID: 224558479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +861,7 @@ GameObject:
   - component: {fileID: 237749555}
   - component: {fileID: 237749557}
   - component: {fileID: 237749556}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: High Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +1013,7 @@ Transform:
   m_GameObject: {fileID: 289614185}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.60000014, y: 2.29, z: 0}
+  m_LocalPosition: {x: 5.1900005, y: 2.29, z: 0}
   m_LocalScale: {x: 0.6607, y: 0.6607, z: 0.6607}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1066,7 +1112,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -7.8583975}
+  m_Offset: {x: 0, y: -8.754761}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1076,7 +1122,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 40, y: 4.283205}
+  m_Size: {x: 40, y: 2.4904795}
   m_EdgeRadius: 0
 --- !u!1 &367518686
 GameObject:
@@ -1087,7 +1133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 367518687}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,7 +1170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368892213}
   - component: {fileID: 368892214}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1372,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.1131115, y: -7.8678827}
+  m_Offset: {x: -3.1131115, y: -8.728547}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1336,7 +1382,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 46.226223, y: 4.264235}
+  m_Size: {x: 46.226223, y: 2.5429063}
   m_EdgeRadius: 0
 --- !u!1 &469808491
 GameObject:
@@ -1364,7 +1410,7 @@ Transform:
   m_GameObject: {fileID: 469808491}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.49, y: 2.33, z: 0}
+  m_LocalPosition: {x: 5.08, y: 2.33, z: 0}
   m_LocalScale: {x: 0.6605, y: 0.6605, z: 0.6605}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1440,7 +1486,7 @@ GameObject:
   - component: {fileID: 566209852}
   - component: {fileID: 566209854}
   - component: {fileID: 566209853}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1655,7 +1701,7 @@ GameObject:
   - component: {fileID: 713501949}
   - component: {fileID: 713501948}
   - component: {fileID: 713501951}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1914,7 +1960,7 @@ GameObject:
   - component: {fileID: 766945755}
   - component: {fileID: 766945757}
   - component: {fileID: 766945756}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2050,7 +2096,7 @@ GameObject:
   - component: {fileID: 821954324}
   - component: {fileID: 821954326}
   - component: {fileID: 821954325}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2185,7 +2231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 841093128}
   - component: {fileID: 841093129}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2248,7 +2294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 930726759}
   - component: {fileID: 930726760}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ToggleMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2323,19 +2369,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_overrideSprite
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2730177103119232129, guid: 9ba481af35fe7a94c87d83e0b20fdb62, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
 --- !u!1 &931156345
 GameObject:
@@ -2363,7 +2397,7 @@ Transform:
   m_GameObject: {fileID: 931156345}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.60000014, y: 2.29, z: 0}
+  m_LocalPosition: {x: 5.1900005, y: 2.29, z: 0}
   m_LocalScale: {x: 0.6607, y: 0.6607, z: 0.6607}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2531,7 +2565,7 @@ GameObject:
   - component: {fileID: 977776167}
   - component: {fileID: 977776166}
   - component: {fileID: 977776165}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Button_Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2752,7 +2786,7 @@ GameObject:
   - component: {fileID: 984358196}
   - component: {fileID: 984358195}
   - component: {fileID: 984358194}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Trophy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2847,12 +2881,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1422850627}
   - {fileID: 939113728}
   - {fileID: 713501946}
-  - {fileID: 1552640197}
   - {fileID: 1470421255}
-  - {fileID: 2058114006}
+  - {fileID: 1552640197}
+  - {fileID: 1422850627}
   m_Father: {fileID: 609415746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2949,7 +2982,7 @@ Transform:
   m_GameObject: {fileID: 1013240837}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 2.29, z: 0}
+  m_LocalPosition: {x: 5.19, y: 2.29, z: 0}
   m_LocalScale: {x: 0.6607, y: 0.6607, z: 0.6607}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3025,7 +3058,7 @@ GameObject:
   - component: {fileID: 1018964622}
   - component: {fileID: 1018964624}
   - component: {fileID: 1018964623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Label (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3105,7 +3138,7 @@ GameObject:
   - component: {fileID: 1028016275}
   - component: {fileID: 1028016274}
   - component: {fileID: 1028016273}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Button_Retry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3236,7 +3269,7 @@ GameObject:
   - component: {fileID: 1126342213}
   - component: {fileID: 1126342215}
   - component: {fileID: 1126342214}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Current Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3372,7 +3405,7 @@ GameObject:
   - component: {fileID: 1157336012}
   - component: {fileID: 1157336014}
   - component: {fileID: 1157336013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3451,7 +3484,7 @@ GameObject:
   - component: {fileID: 1164726959}
   - component: {fileID: 1164726961}
   - component: {fileID: 1164726960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3589,7 +3622,7 @@ GameObject:
   - component: {fileID: 1282035671}
   - component: {fileID: 1282035670}
   - component: {fileID: 1282035673}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Button_Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3659,7 +3692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1282035671}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1685821568}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1282035671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3674,7 +3719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3816,7 +3861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1306399037}
   - component: {fileID: 1306399038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3898,7 +3943,7 @@ GameObject:
   - component: {fileID: 1458952521}
   - component: {fileID: 1458952523}
   - component: {fileID: 1458952522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4035,7 +4080,7 @@ GameObject:
   - component: {fileID: 1467885099}
   - component: {fileID: 1467885098}
   - component: {fileID: 1467885097}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ButtonMainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4192,7 +4237,7 @@ MonoBehaviour:
   obstacleSpawnTime: 2
   obstacleSpeed: 2
   difficultyRamp: 0.05
-  airObstacleHeight: 6.5
+  airObstacleHeight: 5
 --- !u!1 &1552640196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,7 +4338,7 @@ GameObject:
   - component: {fileID: 1652079026}
   - component: {fileID: 1652079025}
   - component: {fileID: 1652079024}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4458,7 +4503,7 @@ GameObject:
   - component: {fileID: 1678061512}
   - component: {fileID: 1678061511}
   - component: {fileID: 1678061510}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ButtonCancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4577,7 +4622,7 @@ GameObject:
   - component: {fileID: 1680867577}
   - component: {fileID: 1680867579}
   - component: {fileID: 1680867578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4652,7 +4697,7 @@ GameObject:
   - component: {fileID: 1685821569}
   - component: {fileID: 1685821571}
   - component: {fileID: 1685821570}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Panel_Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4691,7 +4736,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685821568}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -4733,7 +4778,7 @@ GameObject:
   - component: {fileID: 1783395553}
   - component: {fileID: 1783395555}
   - component: {fileID: 1783395554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4810,7 +4855,7 @@ GameObject:
   - component: {fileID: 1843968557}
   - component: {fileID: 1843968556}
   - component: {fileID: 1843968555}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ButtonRetry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4930,7 +4975,7 @@ GameObject:
   - component: {fileID: 1856546065}
   - component: {fileID: 1856546064}
   - component: {fileID: 1856546063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5019,7 +5064,7 @@ GameObject:
   - component: {fileID: 1962237434}
   - component: {fileID: 1962237436}
   - component: {fileID: 1962237435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5156,11 +5201,11 @@ Transform:
   m_GameObject: {fileID: 2058114003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9720}
-  m_LocalScale: {x: 108, y: 108, z: 108}
+  m_LocalPosition: {x: 0, y: 0, z: -90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1006984614}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2088302378
 GameObject:
@@ -5188,7 +5233,7 @@ Transform:
   m_GameObject: {fileID: 2088302378}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.60000014, y: 2.29, z: 0}
+  m_LocalPosition: {x: 5.1900005, y: 2.29, z: 0}
   m_LocalScale: {x: 0.6607, y: 0.6607, z: 0.6607}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5264,7 +5309,7 @@ GameObject:
   - component: {fileID: 2111737431}
   - component: {fileID: 2111737433}
   - component: {fileID: 2111737432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Label (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5337,3 +5382,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 609415746}
+  - {fileID: 2058114006}

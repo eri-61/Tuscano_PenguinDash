@@ -25,9 +25,8 @@ public class PlayerController : MonoBehaviour
     {
         EnhancedTouchSupport.Disable();
     }
-    void Awake()
+    void Start()
     {
-        // Get references to other components in Awake() to ensure they're available
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
@@ -88,8 +87,8 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Reset vertical velocity
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
+        anim.SetBool("isWalking", false);
         anim.SetTrigger("Jump");
-        
     }
 
     public void EndJump()
@@ -100,11 +99,13 @@ public class PlayerController : MonoBehaviour
     System.Collections.IEnumerator Slide()
     {
         isSliding = true;
+        anim.SetBool("isSliding", true);
         anim.SetTrigger("Slide");
 
         yield return new WaitForSeconds(slideDuration);
 
         isSliding = false;
+        anim.SetBool("isSliding", false);
     }
 
     public void EndSlide()
@@ -129,8 +130,6 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -10f);
             this.enabled = false;
 
             if (gameOverScript != null)

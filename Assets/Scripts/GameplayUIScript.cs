@@ -33,7 +33,8 @@ public class GameplayUIScript : MonoBehaviour
 
     void showPauseMenu()
     {
+        Debug.Log("Pause button clicked!");
         pauseMenu.SetActive(true);
-        Time.timeScale = 0f; // Pause the game
+        Time.timeScale = 0f;
     }
 }

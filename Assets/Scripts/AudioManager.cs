@@ -48,6 +48,8 @@ public class AudioManager : MonoBehaviour
     public void ToggleMusic(bool isOn)
     {
         isMusicOn = isOn;
+        PlayerPrefs.SetInt("Music", isMusicOn ? 1 : 0); // Save music state
+        PlayerPrefs.Save();
         if (isMusicOn)
         {
             musicToggle.sprite = onSprite;
@@ -66,6 +68,9 @@ public class AudioManager : MonoBehaviour
         if (trackIndex < 0 || trackIndex >= musicTracks.Length) return;
 
         currentTrackIndex = trackIndex;
+        PlayerPrefs.SetInt("Track", currentTrackIndex); // Save track index
+        PlayerPrefs.Save();
+
         musicSource.clip = musicTracks[currentTrackIndex];
         if (isMusicOn)
         {

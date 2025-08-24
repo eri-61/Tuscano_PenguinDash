@@ -39,6 +39,21 @@ public class GameOverScript : MonoBehaviour
             gameOverPanel.SetActive(true);
         }
     }
+    void OnEnable()
+    {
+        if (Menu != null)
+            Menu.onClick.AddListener(Exit);
+        if (Retry != null)
+            Retry.onClick.AddListener(Reset);
+    }
+
+    void OnDisable()
+    {
+        if (Menu != null)
+            Menu.onClick.RemoveListener(Exit);
+        if (Retry != null)
+            Retry.onClick.RemoveListener(Reset);
+    }
     public void Reset()
     {
         GameManager.Instance.SaveHighScore();
