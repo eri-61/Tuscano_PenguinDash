@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D rb;
-    
-    private PlayerColliderHandler colliderHandler;
+    private Collider2D col;
 
     private bool isGrounded = true;
     private bool isSliding = false;
@@ -26,14 +25,14 @@ public class PlayerController : MonoBehaviour
     {
         EnhancedTouchSupport.Disable();
     }
-
-    void Start()
+    void Awake()
     {
+        // Get references to other components in Awake() to ensure they're available
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        colliderHandler = GetComponent<PlayerColliderHandler>();
-
+        col = GetComponent<Collider2D>();
     }
+
 
     void Update()
     {
@@ -86,7 +85,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!isGrounded) return;
 
-        colliderHandler.SwitchToJumpCollider(); // Switch to jumping collider
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Reset vertical velocity
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
@@ -96,26 +94,22 @@ public class PlayerController : MonoBehaviour
 
     public void EndJump()
     {
-        colliderHandler.SwitchToDefaultCollider(); // Switch back to default collider
         anim.SetBool("isWalking", true);
     }
 
     System.Collections.IEnumerator Slide()
     {
         isSliding = true;
-        colliderHandler.SwitchToSlideCollider(); // Switch to sliding collider
         anim.SetTrigger("Slide");
 
         yield return new WaitForSeconds(slideDuration);
 
         isSliding = false;
-        colliderHandler.SwitchToDefaultCollider(); // Switch back to default collider
     }
 
     public void EndSlide()
     {
         anim.SetBool("isWalking", true);
-        colliderHandler.SwitchToDefaultCollider(); // Switch back to default collider
         isSliding = false; // safety in case coroutine finishes early
     }
 
@@ -130,22 +124,13 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             anim.SetBool("isWalking", true);
-            colliderHandler.SwitchToDefaultCollider(); // Switch back to default collider
+
         }
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            // Disable all player colliders so he can fall through the ground
-            Collider2D[] allColliders = GetComponents<Collider2D>();
-            foreach (Collider2D col in allColliders)
-            {
-                col.enabled = false;
-            }
 
-            // Apply a downward velocity to the Rigidbody
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, -10f);
-
-            // Stop the player controller script
             this.enabled = false;
 
             if (gameOverScript != null)

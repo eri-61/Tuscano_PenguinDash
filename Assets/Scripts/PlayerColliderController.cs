@@ -35,4 +35,11 @@ public class PlayerColliderHandler : MonoBehaviour
         slidingCollider.enabled = false;
         jumpingCollider.enabled = false;
     }
+
+    public void DisableAllColliders()
+    {
+        walkingCollider.enabled = false;
+        slidingCollider.enabled = false;
+        jumpingCollider.enabled = false;
+    }
 }
